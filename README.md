@@ -10,7 +10,6 @@ Install Node.js and then:
 
 ```sh
 $ git clone git@github.com:N7i/AngularJs-Ecommerce.git
-$ cd ng-boilerplate
 $ sudo npm -g install grunt-cli karma bower
 $ npm install
 $ bower install
