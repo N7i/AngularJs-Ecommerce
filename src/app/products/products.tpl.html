@@ -1,0 +1,44 @@
+<div class="prodcuts">
+    <h1>Available products</h1>
+
+    <div class="filters row">
+        <form class="form-horizontal">
+            <div class="col-sm-9">
+                <input type="text" class="form-control"
+                       placeholder="What do you want ?"
+                       ng-model="query" />
+            </div>
+            <div class="col-sm-2">
+               <select class="form-control" ng-model="order" ng-init="order = 'price'">
+                   <option value="title">Title</option>
+                   <option value="price">Price</option>
+                   <option value="isbn">ISBN</option>
+               </select>
+            </div>
+            <div class="col-sm-1"
+                 ng-init="orderReverse = false" ng-click="orderReverse = !orderReverse">
+                <a href="javascript:void(0);">
+                    <i class="fa"
+                       ng-class="{'fa-sort-asc': orderReverse, 'fa-sort-desc': !orderReverse}"></i>
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <div class="product-container row" 
+         ng-repeat="book in products.books 
+                        | orderBy:order:orderReverse
+                        | filter:query as queryResult">
+        <product-book 
+                      book="book"
+                      store="products.store">
+        </product-book>
+    </div>
+
+    <div class="row"
+         ng-if="!queryResult.length">
+        <p class="text-center">
+            Oops ! No result found for : <strong>{{ query }}</strong>
+        </p>
+    </div>
+</div>

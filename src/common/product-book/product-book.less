@@ -1,0 +1,19 @@
+.product-book {
+    &.panel-primary {
+        .panel-heading {
+            h4 {
+                &::before {
+                    content: '\f00c';
+                    width: 20px;
+                    height: 20px;
+                    display: inline-block;
+                    position: relative;
+                    font: normal normal normal 20px/1 FontAwesome;
+                    text-align: right;
+                    color: white;
+                    float: right;
+                }
+            }
+        }
+    }
+}

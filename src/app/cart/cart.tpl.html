@@ -1,0 +1,52 @@
+﻿<div class="cart prodcuts">
+    <h1>Your Cart</h1>
+
+    <div class="text-center" 
+         ng-if="!cart.getPendingOrders().length">
+        You do not have any product in your cart yet.
+    </div>
+
+    <div class="panel panel-default" ng-repeat="order in cart.getPendingOrders()">
+        <div class="panel-heading">
+            <div class="pull-right trashed"
+                 ng-click="cart.removeOrder(order)">
+                <i class="fa fa-trash-o"></i>
+            </div>
+            <h4>{{ ::order.product.title }}</h4>
+        </div>
+        <div class="panel-body">
+            <img class="img-circle pull-right book-cover"
+                 ng-src="{{ ::order.product.cover }}">
+            <div class="clearfix"></div>
+            <p>
+                <strong>Quantity: {{ order.quantity }}</strong><br />
+                <strong>Price :</strong> {{ ::order.product.price | currency:"&euro;":0 }}<br />
+                <strong>Total price :</strong> {{ order.product.price * order.quantity  | currency:"&euro;":0 }} <br />
+            </p>
+
+            <hr>
+            <ul class="list-unstyled">
+                <li>
+                    <button class="btn btn-danger"
+                            ng-click="cart.removeOne(order)">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button class="btn btn-primary"
+                            ng-click="cart.addOne(order)">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <div ng-if="cart.getPendingOrders().length">
+        <p>
+            <strong>Total products price :</strong> {{ productsInCartPrice.original | currency:"&euro;":0  }}<br />
+            <span class="reduction"><strong>Total reduction price : </strong>  {{ productsInCartPrice.original - productsInCartPrice.offer | currency:"-&euro;":0  }}</span><br />
+            <strong>Total invoice :</strong> {{ productsInCartPrice.offer | currency:"&euro;":0  }}
+        </p>
+    </div>
+
+</div>

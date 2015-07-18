@@ -1,0 +1,26 @@
+﻿<div class="panel product-book"
+     ng-class="isProductInStore(book) ? 'panel-primary' : 'panel-default'">
+    <div class="panel-heading">
+        <h4>{{ ::book.title }}</h4>
+    </div>
+    <div class="panel-body">
+        <img class="img-circle pull-right book-cover"
+             ng-src="{{ ::book.cover}}"> 
+        <div class="clearfix"></div>
+        <p>
+           <strong>Price :</strong> {{ ::book.price | currency:"USD$":0 }}<br />
+           <strong>ISBN :</strong> {{ ::book.isbn }} <br />
+        </p>
+
+        <hr>
+        <ul class="list-unstyled">
+            <li>
+                <button class="btn btn-primary"
+                        ng-click="pushProtuctToCart(book)">
+                    Buy it now !
+                </button>
+            </li>
+        </ul>
+        
+    </div>
+</div>
