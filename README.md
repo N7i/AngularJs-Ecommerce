@@ -16,6 +16,10 @@ $ bower install
 $ grunt
 $ node server.js
 ```
+Then simple open http://localhost:8000/ in your browser.
+
+Demo : http://secure-sea-5115.herokuapp.com/
+
 **Free Software, Hell Yeah!**
 
 
